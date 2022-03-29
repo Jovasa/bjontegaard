@@ -18,7 +18,7 @@ import numpy as np
 import scipy.interpolate
 
 
-def bd_rate(rateA, distA, rateB, distB, ax=None):
+def bd_rate(rateA, distA, rateB, distB, *, ax=None, convert_to_percentage=True):
     rateA = np.array(rateA)
     distA = np.array(distA)
     rateB = np.array(rateB)
@@ -51,7 +51,10 @@ def bd_rate(rateA, distA, rateB, distB, ax=None):
     avg = (int2 - int1) / (maxPSNR - minPSNR)
 
     # Convert to a percentage.
-    bdrate = ((10 ** avg) - 1) * 100
+    if convert_to_percentage:
+        bdrate = ((10 ** avg) - 1) * 100
+    else:
+        bdrate = ((10 ** avg) - 1)
 
     if ax:
         ax.set_title('Piece-wise cubic interpolation')

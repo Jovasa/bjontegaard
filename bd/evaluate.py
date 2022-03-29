@@ -27,7 +27,7 @@ def compare(rate1, psnr1, rate2, psnr2, paramset=('rate','PSNR'), save_plot=True
 
 	f1 = plt.figure(figsize=(12, 5))
 	ax = f1.add_subplot(1,1,1)
-	bd_rate = bd_cubic.bd_rate(rate1, psnr1, rate2, psnr2, ax)    
+	bd_rate = bd_cubic.bd_rate(rate1, psnr1, rate2, psnr2, ax=ax)
 	bd_PSNR = bd_cubic.bd_PSNR(rate1, psnr1, rate2, psnr2)
 	
 	print('BD ' + paramset[0] + ' Cubic:            ' + str("%.4f" %(bd_rate))+"%")
@@ -37,7 +37,7 @@ def compare(rate1, psnr1, rate2, psnr2, paramset=('rate','PSNR'), save_plot=True
 	
 	f2 = plt.figure(figsize=(12, 5))
 	ax = f2.add_subplot(1,1,1)
-	bd_rate = bd_piecewise_cubic.bd_rate(rate1, psnr1, rate2, psnr2, ax)
+	bd_rate = bd_piecewise_cubic.bd_rate(rate1, psnr1, rate2, psnr2, ax=ax)
 	bd_PSNR = bd_piecewise_cubic.bd_PSNR(rate1, psnr1, rate2, psnr2)
 	
 	print('BD ' + paramset[0] + ' Piecewise-cubic:  ' + str("%.4f" %(bd_rate))+"%")
@@ -47,7 +47,7 @@ def compare(rate1, psnr1, rate2, psnr2, paramset=('rate','PSNR'), save_plot=True
 
 	f3 = plt.figure(figsize=(12, 5))
 	ax = f3.add_subplot(1,1,1)
-	bd_rate = bd_akima.bd_rate(rate1, psnr1, rate2, psnr2, ax)
+	bd_rate = bd_akima.bd_rate(rate1, psnr1, rate2, psnr2, ax=ax)
 	bd_PSNR = bd_akima.bd_PSNR(rate1, psnr1, rate2, psnr2)
 	
 	print('BD ' + paramset[0] + ' Akima:            ' + str("%.4f" %(bd_rate))+"%")

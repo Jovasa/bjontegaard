@@ -20,7 +20,7 @@ import scipy.interpolate
 import matplotlib.pyplot as plt
 
 
-def bd_rate(rateA, distA, rateB, distB, ax, paramset=('rate', 'PSNR')):
+def bd_rate(rateA, distA, rateB, distB, *, ax, paramset=('rate', 'PSNR'), convert_to_percentage=True):
     # makes sure that x and y coordinates are in increasing order
     if rateA[-1] < rateA[0]:
         assert (distA[-1] < distA[0])
@@ -52,7 +52,10 @@ def bd_rate(rateA, distA, rateB, distB, ax, paramset=('rate', 'PSNR')):
     avg = (int2 - int1) / (max_ - min_)
 
     # convert to a percentage
-    bdrate = ((10 ** avg) - 1) * 100
+    if convert_to_percentage:
+        bdrate = ((10 ** avg) - 1) * 100
+    else:
+        bdrate = ((10 ** avg) - 1)
 
     if ax:
         ax.set_title('BD Calculation with Akima Interpolation')

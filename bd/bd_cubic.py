@@ -77,7 +77,7 @@ def bd_PSNR(rate1, psnr1, rate2, psnr2):
     return avg_diff
 
 
-def bd_rate(rate1, psnr1, rate2, psnr2, ax=None):
+def bd_rate(rate1, psnr1, rate2, psnr2, *, ax=None, convert_to_percentage=True):
     """
     BJONTEGAARD    Bjontegaard metric calculation
     Bjontegaard's metric allows to compute the average % saving in bitrate
@@ -124,7 +124,10 @@ def bd_rate(rate1, psnr1, rate2, psnr2, ax=None):
         avg_exp_diff = 200
 
     # Convert to a percentage.
-    avg_diff = (math.exp(avg_exp_diff) - 1) * 100
+    if convert_to_percentage:
+        avg_diff = (math.exp(avg_exp_diff) - 1) * 100
+    else:
+        avg_diff = (math.exp(avg_exp_diff) - 1)
 
     if ax:
         ax.set_title('Cubic interpolation (non-piece-wise)')
