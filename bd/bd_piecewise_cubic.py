@@ -19,7 +19,6 @@ import scipy.interpolate
 
 
 def bd_rate(rateA, distA, rateB, distB, ax=None):
-
     rateA = np.array(rateA)
     distA = np.array(distA)
     rateB = np.array(rateB)
@@ -73,7 +72,6 @@ def bd_rate(rateA, distA, rateB, distB, ax=None):
 
 
 def bd_PSNR(rateA, distA, rateB, distB):
-
     rateA = np.array(rateA)
     distA = np.array(distA)
     rateB = np.array(rateB)

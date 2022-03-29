@@ -19,8 +19,8 @@ import math
 import scipy.interpolate
 import matplotlib.pyplot as plt
 
-def bd_rate(rateA, distA, rateB, distB, ax, paramset=('rate','PSNR')):
 
+def bd_rate(rateA, distA, rateB, distB, ax, paramset=('rate', 'PSNR')):
     # makes sure that x and y coordinates are in increasing order
     if rateA[-1] < rateA[0]:
         assert (distA[-1] < distA[0])
@@ -40,7 +40,7 @@ def bd_rate(rateA, distA, rateB, distB, ax, paramset=('rate','PSNR')):
     min_ = max(distA.min(), distB.min())
     max_ = min(distA.max(), distB.max())
 
-	# if min_ is bigger than max_, the curves of both sequences don't overlap - BD cannot be calculated!
+    # if min_ is bigger than max_, the curves of both sequences don't overlap - BD cannot be calculated!
     if min_ > max_:
         return float('nan')
 
@@ -53,7 +53,7 @@ def bd_rate(rateA, distA, rateB, distB, ax, paramset=('rate','PSNR')):
 
     # convert to a percentage
     bdrate = ((10 ** avg) - 1) * 100
-    
+
     if ax:
         ax.set_title('BD Calculation with Akima Interpolation')
         # plot rateA and distA
@@ -73,7 +73,6 @@ def bd_rate(rateA, distA, rateB, distB, ax, paramset=('rate','PSNR')):
 
 
 def bd_PSNR(rateA, distA, rateB, distB):
-
     # makes sure that x and y coordinates are in increasing order
     if rateA[-1] < rateA[0]:
         assert (distA[-1] < distA[0])
@@ -96,7 +95,7 @@ def bd_PSNR(rateA, distA, rateB, distB):
     min_ = max(rateA.min(), rateB.min())
     max_ = min(rateA.max(), rateB.max())
 
-	# if min_ is bigger than max_, the curves of both sequences don't overlap - BD cannot be calculated!
+    # if min_ is bigger than max_, the curves of both sequences don't overlap - BD cannot be calculated!
     if min_ > max_:
         return float('nan')
 
